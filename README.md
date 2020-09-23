@@ -16,4 +16,4 @@ or executing the first cell in VQE_submission.ipynb. It is assumed that the user
 
 If there is any difficulty in viewing or running the code, you can view the file named VQE_submission.html or view it on [nbviewer](https://nbviewer.jupyter.org/github/Rohit23110/Variational-Quantum-Eigensolver/blob/master/VQE_submission.ipynb). 
 
-Note: Additional changes were made to the repository after submitting the google form and are committed to the repository 2 minutes past the deadline of midnight 23rd September IST
+Note: Additional changes were made to the repository after submitting the google form and are committed to the repository 7 minutes past the deadline of midnight 23rd September IST
