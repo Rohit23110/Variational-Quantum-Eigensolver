@@ -13136,7 +13136,7 @@ The steps involved in the algorithm can be summarized as follows:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39; Importing the required modules and defining global constants &#39;&#39;&#39;</span>
@@ -13146,6 +13146,7 @@ The steps involved in the algorithm can be summarized as follows:</p>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">savefig</span>
+<span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 
     </div>
@@ -13166,7 +13167,7 @@ $$a_{\text{ij}} = \frac{1}{4}tr(\left( \sigma_{i} \otimes \sigma_{j} \right)H)\ 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">decompose_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
@@ -13209,7 +13210,7 @@ $$a_{\text{ij}} = \frac{1}{4}tr(\left( \sigma_{i} \otimes \sigma_{j} \right)H)\ 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">given_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span> 
@@ -13264,7 +13265,7 @@ $$H = \frac{1}{2}\left( \sigma_{I} \otimes \sigma_{I} \right) - \frac{1}{2}\ \le
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_trial_state_circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
@@ -13307,7 +13308,7 @@ $$S^{\dagger} = \ \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; - i \\ \end{bmatrix}\ \ \
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quantum_module_simulator</span><span class="p">(</span><span class="n">trial_state_circuit</span><span class="p">,</span> <span class="n">pauli_product</span><span class="p">,</span> <span class="n">number_of_shots</span><span class="p">):</span>
@@ -13380,7 +13381,7 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">calculate_expectation_value</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">pauli_product</span><span class="p">):</span>
@@ -13438,7 +13439,7 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">calculate_expectation_value_of_hamiltonian</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">coefficient_dict</span><span class="p">):</span>
@@ -13481,7 +13482,7 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">given_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span> 
@@ -13491,8 +13492,8 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
                          
 <span class="n">coefficient_dict</span> <span class="o">=</span> <span class="n">decompose_matrix</span><span class="p">(</span><span class="n">given_matrix</span><span class="p">)</span>
 
-<span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta3</span><span class="p">,</span> <span class="n">theta4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta3</span><span class="p">,</span> <span class="n">theta4</span><span class="p">]</span>
+<span class="n">theta1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1</span><span class="p">]</span>
 <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
 
 <span class="sd">&#39;&#39;&#39; Running classical algorithm on the given matrix to find exact value &#39;&#39;&#39;</span>
@@ -13544,15 +13545,15 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Observations-and-Results">Observations and Results<a class="anchor-link" href="#Observations-and-Results">&#182;</a></h2><h3 id="Selection-of-Ansatz">Selection of Ansatz<a class="anchor-link" href="#Selection-of-Ansatz">&#182;</a></h3><p>As I mentioned earlier, I tried several different ansatze and kept a track of the expectation value of the Hamiltonian obtained using the ansatze. My initial approach was to try several ansatze randomly and observe the effect they have on the expectation value. Some of my initial guesses were based on lectures 25 to 27 by IBM in the course Introduction to Quantum Computing and Quantum Hardware<sup>[[9]]</sup>.</p>
-<p>I obtained the expectation value for each ansatz thrice to minimize variation due to random seed of the noiseless simulator. I present the output for each ansatz in the form of a table. It is stored in a file called experimental_data.csv. Due to lack of space I do not print the description of each ansatz below. Also, it would be difficult to show the plots of the circuit along with the expectation values in 1 table, so I have stored the plots of each circuit with their previous parameters in the circuits folder of the repository and can be viewed from there. In all cases, the number of shots for each circuit is fixed at 8192.</p>
+<h2 id="Observations-and-Results">Observations and Results<a class="anchor-link" href="#Observations-and-Results">&#182;</a></h2><h3 id="Selection-of-Ansatz">Selection of Ansatz<a class="anchor-link" href="#Selection-of-Ansatz">&#182;</a></h3><p>As I mentioned earlier, I tried several different ansatze and kept a track of the expectation value of the Hamiltonian obtained using the ansatze. My initial approach was to try several ansatze randomly and observe the effect they have on the expectation value. Some of my ansatze were based on the ones shown in lectures 25 to 27 of the course Introduction to Quantum Computing and Quantum Hardware<sup>[[9]]</sup> by IBM. This paper<sup>[[10]]</sup> by Sukin Sim et. al. helped me visualize the expressibility of different circuits and guided me in choosing a good ansatz.</p>
+<p>I obtained the expectation value for each ansatz thrice to show the variation in values due to random seed of the noiseless simulator and the convergence of the optimiser. The data for each ansatz is stored in a file name experimental_data.csv and the corresponding circuit diagram (parameters of the circuit have values for the last iteration) for each ansatz is stored in the circuits directory. Due to lack of space, I do not display the description and plot of each ansatz below. In all cases, the number of shots (i.e. total count) for each circuit is fixed at 8192.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">experimental_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;experimental_data.csv&quot;</span><span class="p">)</span>
@@ -13571,7 +13572,7 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13698,24 +13699,27 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The following observations are made based on the above experimental data:</p>
+<p>The following observations and results are made based on the above experimental data:</p>
 <ol>
-<li>In case of Ansatz1, Ansatz2, Ansatz3 and Ansatz4, the expectation values that are obtained are 10<sup>4</sup> to 10<sup>2</sup> orders of magnitude away from the lowest eigenvalue. Hence, they are not good ansatze. The reason behind this is that the all these ansatz are neither expressible nor represent a large number of states. So, even after optimization the circuit would not give an eigen value of -1.</li>
+<li>In case of Ansatz1, Ansatz2, Ansatz3 and Ansatz4, the expectation values that are obtained are 10<sup>4</sup> to 10<sup>2</sup> orders of magnitude away from the lowest eigenvalue. This may be due to 2 reasons: Firstly, the ansatze do not have many number of gates and secondly, they do not have entangling capability and hence, are limited in the number of states they represent. So, there is a good possibility that the subspace they represent does not have any vector near the required eigenvector.</li>
 </ol>
-<p>Note: Entanglement was introduced in all circuits from Ansatz5, which increases the expressibility of the ansatz</p>
+<p>Note 1: Entanglement was introduced in all circuits from Ansatz5, which increases the expressibility of the ansatz.</p>
 <ol>
-<li><p>In case of Ansatz 5, the number of gates have been increased and entanglement has been introduced. So, the circuit is expressible. But, the subspace represented by the ansatz still does not contain the exact state represented by the required eigen vector. Hence, we are still an order of magnitude away from the solution.</p>
+<li><p>In case of Ansatz 5, the number of gates have been increased and entanglement has been introduced. So, the circuit is more expressible. But, the subspace represented by the ansatz still does not contain the exact state represented by the required eigen vector. Hence, we are still an order of magnitude away from the solution.</p>
 </li>
 <li><p>In case of Ansatz 6, the number of gates have been further increased but this worsens the expectation value. This might be due the fact that we have only 2 parameters and adding more gates makes the task of the optimiser difficult without giving a better solution.</p>
 </li>
-<li><p>In case of Ansatz 7, we add more parameters to the circuit while keeping the number of gates constant. This increases the expressibility further and now we get a much better upper bound. The drawback is that the circuit takes longer to execute and more time is taken per iteration.</p>
+</ol>
+<p>Note 2: Adding more gates and parameters increases the time taken to calculate the eigenvalue. This delay in execution is visible while obtaining values for Ansatze 5 through 8.</p>
+<ol>
+<li><p>In case of Ansatz 7, we add more parameters (4) to the circuit while keeping the number of gates constant (9). This increases the expressibility further and we get a much better upper bound.</p>
 </li>
-<li><p>In case of Ansatz 8, we increase the gates again but this time we have 4 parameters instead of 2. This is the best I could do with my circuit and was the closest expectation value I got. The drawback here was same as Ansatz 7 and I had to look for alternatives.</p>
+<li><p>In case of Ansatz 8, we increase the gates again but this time we have 4 parameters instead of 2. This is the best circuit I made with the closest upper bound. Expectation value 2 for this ansatz is an anomaly when compared to Expectation value 1 and Expectation value 3. This is the problem that plagues larger circuits. As the sub space represented by them increases, there may be local minima that occur which cause the optimizer to converge at such values. Repeatedly performing the experiments at different initial points is one of the solutions to this problem.</p>
 </li>
-<li><p>I had a look at the ansatz given in the hint and applied it here. It had only 3 gates and 1 parameter so I was suspicious. But surprisingly, it gave the exact eigenvalue of -1 each time I executed it without taking long to execute. Later, I deduced that the subspace represented by AnsatzHint contains the exact eigenvector that we need and varying the parameter would always lead us to the exact solution. Since, the circuit is small, it is not expressible but it works in this case.</p>
+<li><p>I had a look at the ansatz given in the hint and applied it here. It had only 3 gates and 1 parameter so I was suspicious. But surprisingly, it gave the exact eigenvalue of -1 each time I executed it without taking long to execute. Later, I deduced that the subspace represented by AnsatzHint contains the exact eigenvector that we need and varying the parameter would always lead us to the exact solution. Since, the circuit is small, it is not expressible but it is one of the best ansatz for this case.</p>
 </li>
 </ol>
-<p>After analysing all these observations, one can see that we can get a good (or exact) upper bound on the lowest eigen value if we know the subspace in which the corresponding eigenvector lies. We can design very shallow circuits which sweep that subspace to get the eigenvalue. This approach cannot be generalised as in large and random hamiltonians we would not know the subspace in which the eigenvectors lie and we need expressible circuits. In such cases, we need generalised circuits like Ansatz8 which would take more time but give us a good upper bound.</p>
+<p>After analysing all these observations, it is seen that we can get a good (or exact) upper bound on the lowest eigen value if we know the subspace in which the corresponding eigenvector lies. We can design very shallow circuits which sweep that subspace to get the eigenvalue. This approach cannot be generalised for large and random hamiltonians as we would not know the subspace in which the eigenvector lies. In such cases, we need expressible circuits and generalised circuits like Ansatz8 which would take more time but give us a good upper bound for most cases.</p>
 
 </div>
 </div>
@@ -13723,7 +13727,255 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Introducing-noise-into-the-circuit">Introducing noise into the circuit<a class="anchor-link" href="#Introducing-noise-into-the-circuit">&#182;</a></h3><p>I ran the circuit having AnsatzHint which gave an exact eigen value of -1 on the noiseless simulator on a noisy IBM quantum computer (ibmq_15_melbourne). I observed that even this shallow circuit could not give an exact value on the noisy device and gave an upper bound of -0.9023. This effect of noise is drastic and we need better quantum devices to get exact eigen values in the future.</p>
+<h3 id="Introducing-noise-into-the-circuit">Introducing noise into the circuit<a class="anchor-link" href="#Introducing-noise-into-the-circuit">&#182;</a></h3><p>I ran the circuit having AnsatzHint which gave an exact eigen value of -1 on the noiseless simulator on a noisy IBM quantum computer (ibmq_15_melbourne). Since, there is queue for executing on real devices, I executed the circuit once with a parameter of pi (This parameter is the one that gives exact eigen value).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span> <span class="c1"># Load credentials for IBMQ</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quantum_module_hardware</span><span class="p">(</span><span class="n">trial_state_circuit</span><span class="p">,</span> <span class="n">pauli_product</span><span class="p">,</span> <span class="n">number_of_shots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    This is a generalized function that adds transformations and performs measurements on the trial</span>
+<span class="sd">    state based on the pauli matrices. The measurements are performed repeatedly to obtain counts of </span>
+<span class="sd">    each output state. The measurements are performed on an real hardware.</span>
+<span class="sd">  </span>
+<span class="sd">    Parameters: </span>
+<span class="sd">    trial_state_circuit (QuantumCircuit): Circuit that prepares the trial state</span>
+<span class="sd">    pauli_product (str): String representation of tensor product of pauli matrices</span>
+<span class="sd">    number_of_shots (int): Number of times measurements should be performed on the trial state</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: </span>
+<span class="sd">    counts (dict): Dictionary of counts of each output state</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">measurement_circuit</span> <span class="o">=</span> <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">qubit</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cbit</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">pauli_matrix</span> <span class="ow">in</span> <span class="n">pauli_product</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pauli_matrix</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+            <span class="n">measurement_circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pauli_matrix</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
+            <span class="n">measurement_circuit</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+            <span class="n">measurement_circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pauli_matrix</span> <span class="o">!=</span> <span class="s1">&#39;I&#39;</span> <span class="ow">and</span> <span class="n">pauli_matrix</span> <span class="o">!=</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Pauli product should consist only of I, X, Y or Z matrices&quot;</span><span class="p">)</span>
+        <span class="n">measurement_circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">cbit</span><span class="p">)</span>
+        <span class="n">qubit</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">cbit</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">ibmq_16_melbourne</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">measurement_circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">number_of_shots</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">counts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">calculate_expectation_value_of_hamiltonian_hardware</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">coefficient_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Calculates the expectation value of the hamiltonian using the parameters for trial state circuit</span>
+<span class="sd">    and coefficients of pauli products using real hardware</span>
+<span class="sd">  </span>
+<span class="sd">    Parameters: </span>
+<span class="sd">    parameters (np.array): List of angles that act as parameters for the trial state circuit </span>
+<span class="sd">    coefficient_dict (dict): Coeffiecients of pauli products obtained by decomposing the hamiltonian</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: </span>
+<span class="sd">    expectation_value_of_hamiltonian (float): Expectation value of the hamiltonian</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">trial_state_circuit</span> <span class="o">=</span> <span class="n">create_trial_state_circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+    <span class="n">expectation_value</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">pauli_product</span> <span class="ow">in</span> <span class="n">coefficient_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">coefficient_dict</span><span class="p">[</span><span class="n">pauli_product</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">counts</span> <span class="o">=</span> <span class="n">quantum_module_hardware</span><span class="p">(</span><span class="n">trial_state_circuit</span><span class="p">,</span> <span class="n">pauli_product</span><span class="p">,</span> <span class="mi">8192</span><span class="p">)</span>
+            <span class="n">expectation_value</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">coefficient_dict</span><span class="p">[</span><span class="n">pauli_product</span><span class="p">])</span> <span class="o">*</span> <span class="n">calculate_expectation_value</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">pauli_product</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">expectation_value</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">given_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span> 
+                         <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+                         <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+                         <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> 
+                         
+<span class="n">coefficient_dict</span> <span class="o">=</span> <span class="n">decompose_matrix</span><span class="p">(</span><span class="n">given_matrix</span><span class="p">)</span>
+
+<span class="n">theta1</span> <span class="o">=</span> <span class="n">pi</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1</span><span class="p">]</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="sd">&#39;&#39;&#39; Running classical algorithm on the given matrix to find exact value &#39;&#39;&#39;</span>
+<span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">given_matrix</span><span class="p">)</span>
+<span class="n">lowest_eigenvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Classically calculated eigenvalues of given hamiltonian are: &quot;</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lowest eigenvalue calculated using classical methods: &quot;</span><span class="p">,</span> <span class="n">lowest_eigenvalue</span><span class="p">)</span>
+
+<span class="n">expectation_value</span> <span class="o">=</span> <span class="n">calculate_expectation_value_of_hamiltonian_hardware</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">coefficient_dict</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper bound on lowest eigenvalue calculated using VQE: &quot;</span><span class="p">,</span> <span class="n">expectation_value</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Classically calculated eigenvalues of given hamiltonian are:  [ 1. -1.  1.  1.]
+Lowest eigenvalue calculated using classical methods:  -1.0
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-14-23220d33082c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">     17</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;Lowest eigenvalue calculated using classical methods: &#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> lowest_eigenvalue<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     18</span> 
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 19</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>expectation_value <span class="ansi-yellow-intense-fg ansi-bold">=</span> calculate_expectation_value_of_hamiltonian_hardware<span class="ansi-yellow-intense-fg ansi-bold">(</span>parameters<span class="ansi-yellow-intense-fg ansi-bold">,</span> coefficient_dict<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     20</span> 
+<span class="ansi-green-fg">     21</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;Upper bound on lowest eigenvalue calculated using VQE: &#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> expectation_value<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-13-6a31c3decd59&gt;</span> in <span class="ansi-cyan-fg">calculate_expectation_value_of_hamiltonian_hardware</span><span class="ansi-blue-intense-fg ansi-bold">(parameters, coefficient_dict)</span>
+<span class="ansi-green-fg">     18</span>     <span class="ansi-green-intense-fg ansi-bold">for</span> pauli_product <span class="ansi-green-intense-fg ansi-bold">in</span> coefficient_dict<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">     19</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> abs<span class="ansi-yellow-intense-fg ansi-bold">(</span>coefficient_dict<span class="ansi-yellow-intense-fg ansi-bold">[</span>pauli_product<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&gt;</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 20</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>counts <span class="ansi-yellow-intense-fg ansi-bold">=</span> quantum_module_hardware<span class="ansi-yellow-intense-fg ansi-bold">(</span>trial_state_circuit<span class="ansi-yellow-intense-fg ansi-bold">,</span> pauli_product<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">8192</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     21</span>             expectation_value <span class="ansi-yellow-intense-fg ansi-bold">+=</span> np<span class="ansi-yellow-intense-fg ansi-bold">.</span>real<span class="ansi-yellow-intense-fg ansi-bold">(</span>coefficient_dict<span class="ansi-yellow-intense-fg ansi-bold">[</span>pauli_product<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span> calculate_expectation_value<span class="ansi-yellow-intense-fg ansi-bold">(</span>counts<span class="ansi-yellow-intense-fg ansi-bold">,</span> pauli_product<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     22</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-12-d5008e52518f&gt;</span> in <span class="ansi-cyan-fg">quantum_module_hardware</span><span class="ansi-blue-intense-fg ansi-bold">(trial_state_circuit, pauli_product, number_of_shots)</span>
+<span class="ansi-green-fg">     33</span>     backend <span class="ansi-yellow-intense-fg ansi-bold">=</span> provider<span class="ansi-yellow-intense-fg ansi-bold">.</span>backends<span class="ansi-yellow-intense-fg ansi-bold">.</span>ibmq_16_melbourne
+<span class="ansi-green-fg">     34</span>     job <span class="ansi-yellow-intense-fg ansi-bold">=</span> execute<span class="ansi-yellow-intense-fg ansi-bold">(</span>measurement_circuit<span class="ansi-yellow-intense-fg ansi-bold">,</span> backend<span class="ansi-yellow-intense-fg ansi-bold">,</span> shots <span class="ansi-yellow-intense-fg ansi-bold">=</span> number_of_shots<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 35</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> job<span class="ansi-yellow-intense-fg ansi-bold">.</span>result<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     36</span>     counts <span class="ansi-yellow-intense-fg ansi-bold">=</span> result<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_counts<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     37</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\qiskit\providers\ibmq\job\ibmqjob.py</span> in <span class="ansi-cyan-fg">result</span><span class="ansi-blue-intense-fg ansi-bold">(self, timeout, wait, partial, refresh)</span>
+<span class="ansi-green-fg">    263</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">    264</span>         <span class="ansi-red-intense-fg ansi-bold"># pylint: disable=arguments-differ</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 265</span><span class="ansi-yellow-intense-fg ansi-bold">         if not self._wait_for_completion(timeout=timeout, wait=wait,
+</span><span class="ansi-green-fg">    266</span>                                          required_status=(JobStatus.DONE,)):
+<span class="ansi-green-fg">    267</span>             <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_status <span class="ansi-green-intense-fg ansi-bold">is</span> JobStatus<span class="ansi-yellow-intense-fg ansi-bold">.</span>CANCELLED<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\qiskit\providers\ibmq\job\ibmqjob.py</span> in <span class="ansi-cyan-fg">_wait_for_completion</span><span class="ansi-blue-intense-fg ansi-bold">(self, timeout, wait, required_status, status_queue)</span>
+<span class="ansi-green-fg">    814</span> 
+<span class="ansi-green-fg">    815</span>         <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 816</span><span class="ansi-yellow-intense-fg ansi-bold">             status_response = self._api.job_final_status(
+</span><span class="ansi-green-fg">    817</span>                 self.job_id(), timeout=timeout, wait=wait, status_queue=status_queue)
+<span class="ansi-green-fg">    818</span>         <span class="ansi-green-intense-fg ansi-bold">except</span> UserTimeoutExceededError<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\qiskit\providers\ibmq\api\clients\account.py</span> in <span class="ansi-cyan-fg">job_final_status</span><span class="ansi-blue-intense-fg ansi-bold">(self, job_id, timeout, wait, status_queue)</span>
+<span class="ansi-green-fg">    330</span>             start_time <span class="ansi-yellow-intense-fg ansi-bold">=</span> time<span class="ansi-yellow-intense-fg ansi-bold">.</span>time<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    331</span>             <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 332</span><span class="ansi-yellow-intense-fg ansi-bold">                 status_response = self._job_final_status_websocket(
+</span><span class="ansi-green-fg">    333</span>                     job_id=job_id, timeout=timeout, status_queue=status_queue)
+<span class="ansi-green-fg">    334</span>             <span class="ansi-green-intense-fg ansi-bold">except</span> WebsocketTimeoutError <span class="ansi-green-intense-fg ansi-bold">as</span> ex<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\qiskit\providers\ibmq\api\clients\account.py</span> in <span class="ansi-cyan-fg">_job_final_status_websocket</span><span class="ansi-blue-intense-fg ansi-bold">(self, job_id, timeout, status_queue)</span>
+<span class="ansi-green-fg">    382</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    383</span>                 <span class="ansi-green-intense-fg ansi-bold">raise</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 384</span><span class="ansi-yellow-intense-fg ansi-bold">         return loop.run_until_complete(
+</span><span class="ansi-green-fg">    385</span>             self.client_ws.get_job_status(job_id, timeout=timeout, status_queue=status_queue))
+<span class="ansi-green-fg">    386</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\nest_asyncio.py</span> in <span class="ansi-cyan-fg">run_until_complete</span><span class="ansi-blue-intense-fg ansi-bold">(self, future)</span>
+<span class="ansi-green-fg">     87</span>                 f<span class="ansi-yellow-intense-fg ansi-bold">.</span>_log_destroy_pending <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">False</span>
+<span class="ansi-green-fg">     88</span>             <span class="ansi-green-intense-fg ansi-bold">while</span> <span class="ansi-green-intense-fg ansi-bold">not</span> f<span class="ansi-yellow-intense-fg ansi-bold">.</span>done<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 89</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_run_once<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">     90</span>                 <span class="ansi-green-intense-fg ansi-bold">if</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_stopping<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">     91</span>                     <span class="ansi-green-intense-fg ansi-bold">break</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Rohit Pai\Quantum Computing\Variational Quantum Eigensolver\vqe\lib\site-packages\nest_asyncio.py</span> in <span class="ansi-cyan-fg">_run_once</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
+<span class="ansi-green-fg">    111</span>             <span class="ansi-green-intense-fg ansi-bold">else</span> min<span class="ansi-yellow-intense-fg ansi-bold">(</span>max<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> scheduled<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>_when <span class="ansi-yellow-intense-fg ansi-bold">-</span> now<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">10</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">if</span> scheduled<span class="ansi-red-fg"> </span><span class="ansi-red-fg">\</span>
+<span class="ansi-green-fg">    112</span>             <span class="ansi-green-intense-fg ansi-bold">else</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 113</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>event_list <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_selector<span class="ansi-yellow-intense-fg ansi-bold">.</span>select<span class="ansi-yellow-intense-fg ansi-bold">(</span>timeout<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    114</span>         self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_process_events<span class="ansi-yellow-intense-fg ansi-bold">(</span>event_list<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    115</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">c:\users\rohit pai\appdata\local\programs\python\python38\lib\selectors.py</span> in <span class="ansi-cyan-fg">select</span><span class="ansi-blue-intense-fg ansi-bold">(self, timeout)</span>
+<span class="ansi-green-fg">    321</span>         ready <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-fg">    322</span>         <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 323</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>r<span class="ansi-yellow-intense-fg ansi-bold">,</span> w<span class="ansi-yellow-intense-fg ansi-bold">,</span> _ <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_select<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_readers<span class="ansi-yellow-intense-fg ansi-bold">,</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_writers<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> timeout<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    324</span>         <span class="ansi-green-intense-fg ansi-bold">except</span> InterruptedError<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    325</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> ready
+
+<span class="ansi-green-intense-fg ansi-bold">c:\users\rohit pai\appdata\local\programs\python\python38\lib\selectors.py</span> in <span class="ansi-cyan-fg">_select</span><span class="ansi-blue-intense-fg ansi-bold">(self, r, w, _, timeout)</span>
+<span class="ansi-green-fg">    312</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> sys<span class="ansi-yellow-intense-fg ansi-bold">.</span>platform <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;win32&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    313</span>         <span class="ansi-green-intense-fg ansi-bold">def</span> _select<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> r<span class="ansi-yellow-intense-fg ansi-bold">,</span> w<span class="ansi-yellow-intense-fg ansi-bold">,</span> _<span class="ansi-yellow-intense-fg ansi-bold">,</span> timeout<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 314</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>r<span class="ansi-yellow-intense-fg ansi-bold">,</span> w<span class="ansi-yellow-intense-fg ansi-bold">,</span> x <span class="ansi-yellow-intense-fg ansi-bold">=</span> select<span class="ansi-yellow-intense-fg ansi-bold">.</span>select<span class="ansi-yellow-intense-fg ansi-bold">(</span>r<span class="ansi-yellow-intense-fg ansi-bold">,</span> w<span class="ansi-yellow-intense-fg ansi-bold">,</span> w<span class="ansi-yellow-intense-fg ansi-bold">,</span> timeout<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    315</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> r<span class="ansi-yellow-intense-fg ansi-bold">,</span> w <span class="ansi-yellow-intense-fg ansi-bold">+</span> x<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-fg">    316</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I wasn't able to execute the circuit within time but previously I have achieved an expectation value of 0.9023 with theta1 as 0. Noise played a big role in the deviation and lead to errors. This can be fixed only when we have better devices that are resistant to noise and errors. There is constant research being done for this and we have a bright future ahead of us.</p>
 
 </div>
 </div>
