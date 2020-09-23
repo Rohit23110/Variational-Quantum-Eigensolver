@@ -13144,6 +13144,8 @@ The steps involved in the algorithm can be summarized as follows:</p>
 <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">savefig</span>
 </pre></div>
 
     </div>
@@ -13279,10 +13281,11 @@ $$H = \frac{1}{2}\left( \sigma_{I} \otimes \sigma_{I} \right) - \frac{1}{2}\ \le
     <span class="n">trial_state_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-            
+
     <span class="n">trial_state_circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="c1"># trial_state_circuit.draw(output=&#39;mpl&#39;).savefig(&#39;./circuits/AnsatzHint.png&#39;) # This statement was used during the experimentation phase to store the circuits</span>
     <span class="k">return</span> <span class="n">trial_state_circuit</span>
 </pre></div>
 
@@ -13471,7 +13474,7 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Optimizing-the-expectation-value-of-the-Hamiltonian">Optimizing the expectation value of the Hamiltonian<a class="anchor-link" href="#Optimizing-the-expectation-value-of-the-Hamiltonian">&#182;</a></h2><p>Using the above methods, the expectation value with respect to the current trial state is obtained. It needs to be optimised as it may not be the lowest upper bound on the eigen value. Classical optimisation methods such as gradient descent or Nelder-Mead Simplex method can be used to optimize the above function and obtain the lowest possible value. In this notebook, Powell's method is used for optimization. I have also shown the lowest eigen value that is calculated using classical methods for comparison.</p>
+<h2 id="Optimizing-the-expectation-value-of-the-Hamiltonian">Optimizing the expectation value of the Hamiltonian<a class="anchor-link" href="#Optimizing-the-expectation-value-of-the-Hamiltonian">&#182;</a></h2><p>Using the above methods, the expectation value with respect to the current trial state is obtained. It needs to be optimised as it may not be the lowest upper bound on the eigenvalue. Classical optimisation methods such as gradient descent or Nelder-Mead Simplex method can be used to optimize the above function and obtain the lowest possible value. In this notebook, Powell's method is used for optimization. I have also shown the lowest eigen value that is calculated using classical methods for comparison.</p>
 
 </div>
 </div>
@@ -13485,10 +13488,11 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> 
+                         
 <span class="n">coefficient_dict</span> <span class="o">=</span> <span class="n">decompose_matrix</span><span class="p">(</span><span class="n">given_matrix</span><span class="p">)</span>
 
-<span class="n">theta1</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1</span><span class="p">]</span>
+<span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta3</span><span class="p">,</span> <span class="n">theta4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">theta3</span><span class="p">,</span> <span class="n">theta4</span><span class="p">]</span>
 <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span>
 
 <span class="sd">&#39;&#39;&#39; Running classical algorithm on the given matrix to find exact value &#39;&#39;&#39;</span>
@@ -13500,7 +13504,7 @@ $$\left\langle \sigma_{i} \otimes \sigma_{j} \right\rangle\  = P_{00}\left( + 1 
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">calculate_expectation_value_of_hamiltonian</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> 
                            <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">coefficient_dict</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Powell&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
-                           
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper bound on lowest eigenvalue calculated using VQE: &quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
 </pre></div>
 
@@ -13532,8 +13536,202 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>As it is seen above, the VQE algorithm is able to return the exact lowest eigenvalue for the given Hamiltonian for the selected ansatz (the classical method may give a small error which can be neglected). While writing the code, it was observed that varying the ansatz gives varying degrees of success and choosing the correct ansatz for a problem is an art.</p>
-<p>Secondly, the above measurements are done on a noiseless simulator so the output that VQE gives is very close to the exact eigenvalue, provided the correct ansatz is chosen. Executing the same code on a noisy IBM quantum computer led to errors of the magnitude 10<sup>-1</sup>, which is quite far from the exact eigen value. The circuit can be transpiled and optimised to perform better on real hardware and react better to noise.</p>
+<p>As it is seen above, the VQE algorithm is able to return the exact lowest eigenvalue for the given Hamiltonian for the selected ansatz (the classical method may give a small error which can be neglected).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Observations-and-Results">Observations and Results<a class="anchor-link" href="#Observations-and-Results">&#182;</a></h2><h3 id="Selection-of-Ansatz">Selection of Ansatz<a class="anchor-link" href="#Selection-of-Ansatz">&#182;</a></h3><p>As I mentioned earlier, I tried several different ansatze and kept a track of the expectation value of the Hamiltonian obtained using the ansatze. My initial approach was to try several ansatze randomly and observe the effect they have on the expectation value. Some of my initial guesses were based on lectures 25 to 27 by IBM in the course Introduction to Quantum Computing and Quantum Hardware<sup>[[9]]</sup>.</p>
+<p>I obtained the expectation value for each ansatz thrice to minimize variation due to random seed of the noiseless simulator. I present the output for each ansatz in the form of a table. It is stored in a file called experimental_data.csv. Due to lack of space I do not print the description of each ansatz below. Also, it would be difficult to show the plots of the circuit along with the expectation values in 1 table, so I have stored the plots of each circuit with their previous parameters in the circuits folder of the repository and can be viewed from there. In all cases, the number of shots for each circuit is fixed at 8192.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">experimental_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;experimental_data.csv&quot;</span><span class="p">)</span>
+<span class="n">experimental_data_without_description</span> <span class="o">=</span> <span class="n">experimental_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;ID&#39;</span><span class="p">:]</span>
+
+<span class="n">experimental_data_without_description</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Number of gates</th>
+      <th>Number of parameters</th>
+      <th>Expectation Value 1</th>
+      <th>Expectation Value 2</th>
+      <th>Expectation Value 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ansatz1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>-0.002686</td>
+      <td>-0.011108</td>
+      <td>-0.006226</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ansatz2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>-0.002563</td>
+      <td>0.000244</td>
+      <td>-0.009277</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ansatz3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>-0.014160</td>
+      <td>-0.013062</td>
+      <td>-0.014771</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ansatz4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>-0.010742</td>
+      <td>-0.015503</td>
+      <td>0.000122</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ansatz5</td>
+      <td>9</td>
+      <td>2</td>
+      <td>-0.261841</td>
+      <td>-0.269043</td>
+      <td>-0.266235</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ansatz6</td>
+      <td>14</td>
+      <td>2</td>
+      <td>-0.061035</td>
+      <td>-0.062500</td>
+      <td>-0.057007</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ansatz7</td>
+      <td>9</td>
+      <td>4</td>
+      <td>-0.505371</td>
+      <td>-0.511108</td>
+      <td>-0.499512</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Ansatz8</td>
+      <td>14</td>
+      <td>4</td>
+      <td>-0.947998</td>
+      <td>-0.509644</td>
+      <td>-0.945435</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AnsatzHint</td>
+      <td>3</td>
+      <td>1</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following observations are made based on the above experimental data:</p>
+<ol>
+<li>In case of Ansatz1, Ansatz2, Ansatz3 and Ansatz4, the expectation values that are obtained are 10<sup>4</sup> to 10<sup>2</sup> orders of magnitude away from the lowest eigenvalue. Hence, they are not good ansatze. The reason behind this is that the all these ansatz are neither expressible nor represent a large number of states. So, even after optimization the circuit would not give an eigen value of -1.</li>
+</ol>
+<p>Note: Entanglement was introduced in all circuits from Ansatz5, which increases the expressibility of the ansatz</p>
+<ol>
+<li><p>In case of Ansatz 5, the number of gates have been increased and entanglement has been introduced. So, the circuit is expressible. But, the subspace represented by the ansatz still does not contain the exact state represented by the required eigen vector. Hence, we are still an order of magnitude away from the solution.</p>
+</li>
+<li><p>In case of Ansatz 6, the number of gates have been further increased but this worsens the expectation value. This might be due the fact that we have only 2 parameters and adding more gates makes the task of the optimiser difficult without giving a better solution.</p>
+</li>
+<li><p>In case of Ansatz 7, we add more parameters to the circuit while keeping the number of gates constant. This increases the expressibility further and now we get a much better upper bound. The drawback is that the circuit takes longer to execute and more time is taken per iteration.</p>
+</li>
+<li><p>In case of Ansatz 8, we increase the gates again but this time we have 4 parameters instead of 2. This is the best I could do with my circuit and was the closest expectation value I got. The drawback here was same as Ansatz 7 and I had to look for alternatives.</p>
+</li>
+<li><p>I had a look at the ansatz given in the hint and applied it here. It had only 3 gates and 1 parameter so I was suspicious. But surprisingly, it gave the exact eigenvalue of -1 each time I executed it without taking long to execute. Later, I deduced that the subspace represented by AnsatzHint contains the exact eigenvector that we need and varying the parameter would always lead us to the exact solution. Since, the circuit is small, it is not expressible but it works in this case.</p>
+</li>
+</ol>
+<p>After analysing all these observations, one can see that we can get a good (or exact) upper bound on the lowest eigen value if we know the subspace in which the corresponding eigenvector lies. We can design very shallow circuits which sweep that subspace to get the eigenvalue. This approach cannot be generalised as in large and random hamiltonians we would not know the subspace in which the eigenvectors lie and we need expressible circuits. In such cases, we need generalised circuits like Ansatz8 which would take more time but give us a good upper bound.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introducing-noise-into-the-circuit">Introducing noise into the circuit<a class="anchor-link" href="#Introducing-noise-into-the-circuit">&#182;</a></h3><p>I ran the circuit having AnsatzHint which gave an exact eigen value of -1 on the noiseless simulator on a noisy IBM quantum computer (ibmq_15_melbourne). I observed that even this shallow circuit could not give an exact value on the noisy device and gave an upper bound of -0.9023. This effect of noise is drastic and we need better quantum devices to get exact eigen values in the future.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>I want to conclude by saying that it was a great experience working on NISQ algorithm and learning it in depth. The main outcomes for me were that choosing an ansatz for such circuits is an art and it would take a lot of time to develop an intuition in it. I also learnt that there are several factors that can affect the outcome of a variational circuit such as cost of the circuit, expressibility of the circuit, number of parameters, noise of the device, etc. and striking the right balance is important to get a good result.</p>
 
 </div>
 </div>
@@ -13542,19 +13740,19 @@ Upper bound on lowest eigenvalue calculated using VQE:  -1.0
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
-<li><a href="https://www.mustythoughts.com/variational-quantum-eigensolver-explained">https://www.mustythoughts.com/variational-quantum-eigensolver-explained</a>  </li>
+<li><a href="https://www.mustythoughts.com/variational-quantum-eigensolver-explained">https://www.mustythoughts.com/variational-quantum-eigensolver-explained</a></li>
 <li><a href="https://arxiv.org/abs/1304.3061">https://arxiv.org/abs/1304.3061</a></li>
 <li><a href="https://quantumcomputing.stackexchange.com/questions/11899/example-of-hamiltonian-decomposition-into-pauli-matrices">https://quantumcomputing.stackexchange.com/questions/11899/example-of-hamiltonian-decomposition-into-pauli-matrices</a></li>
 <li><a href="https://quantumcomputing.stackexchange.com/questions/8725/can-arbitrary-matrices-be-decomposed-using-the-pauli-basis">https://quantumcomputing.stackexchange.com/questions/8725/can-arbitrary-matrices-be-decomposed-using-the-pauli-basis</a></li>
 <li><a href="https://quantumcomputing.stackexchange.com/questions/6882/decomposition-of-a-matrix-in-the-pauli-basis">https://quantumcomputing.stackexchange.com/questions/6882/decomposition-of-a-matrix-in-the-pauli-basis</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Ansatz">https://en.wikipedia.org/wiki/Ansatz</a></li>
 <li><a href="https://github.com/DavitKhach/quantum-algorithms-tutorials/blob/master/variational_quantum_eigensolver.ipynb">https://github.com/DavitKhach/quantum-algorithms-tutorials/blob/master/variational_quantum_eigensolver.ipynb</a></li>
-<li><a href="https://michaelgoerz.net/notes/decomposing-two-qubit-hamiltonians-into-pauli-matrices.html">https://michaelgoerz.net/notes/decomposing-two-qubit-hamiltonians-into-pauli-matrices.html</a>  </li>
+<li><a href="https://michaelgoerz.net/notes/decomposing-two-qubit-hamiltonians-into-pauli-matrices.html">https://michaelgoerz.net/notes/decomposing-two-qubit-hamiltonians-into-pauli-matrices.html</a></li>
+<li><a href="https://qiskit.org/learn/intro-qc-qh/">Introduction to Quantum Computing and Quantum Hardware - Lecture 25 to 27</a></li>
+<li>Sim, Sukin, Peter D. Johnson, and Alán Aspuru‐Guzik. “Expressibility and Entangling Capability of Parameterized Quantum Circuits for Hybrid Quantum‐Classical Algorithms.” Advanced Quantum Technologies 2.12 (2019): 1900070. Crossref. Web.</li>
 </ol>
 <h2 id="Additional-Resources-used-for-studying-Variational-Quantum-Eigensolver">Additional Resources used for studying Variational Quantum Eigensolver<a class="anchor-link" href="#Additional-Resources-used-for-studying-Variational-Quantum-Eigensolver">&#182;</a></h2><ol>
-<li><a href="https://qiskit.org/learn/intro-qc-qh/">Introduction to Quantum Computing and Quantum Hardware - Lecture 25 to 27</a></li>
 <li><a href="https://github.com/alexander-soare/framework-agnostic-vqe-tutorial">Framework agnostic VQE tutorial by Alexander Soare</a></li>
-<li>Sim, Sukin, Peter D. Johnson, and Alán Aspuru‐Guzik. “Expressibility and Entangling Capability of Parameterized Quantum Circuits for Hybrid Quantum‐Classical Algorithms.” Advanced Quantum Technologies 2.12 (2019): 1900070. Crossref. Web.</li>
 </ol>
 
 </div>

@@ -1,0 +1,10 @@
+﻿Description,ID,Number of gates,Number of parameters,Expectation Value 1,Expectation Value 2,Expectation Value 3
+RX(θ1) followed by RY(θ2) on both qubit 0 and 2,Ansatz1,4,2,-0.002685547,-0.011108398,-0.006225586
+RX(θ1) followed by RY(θ2) on qubit 0 and RX(θ3) followed by RY(θ4) qubit 1 ,Ansatz2,4,4,-0.002563477,0.000244141,-0.009277344
+RY(θ1) followed by RZ(θ2) on both qubit 0 and 2,Ansatz3,4,2,-0.014160156,-0.013061523,-0.014770508
+RY(θ1) followed by RZ(θ2) on qubit 0 and RY(θ3) followed by RZ(θ4) qubit 1 ,Ansatz4,4,4,-0.010742188,-0.01550293,0.00012207
+Ansatz3 followed by CX gate with qubit 0 as control and qubit 1 as target followed by Ansatz3,Ansatz5,9,2,-0.26184082,-0.269042969,-0.266235352
+Ansatz5 followed by CX gate with qubit 0 as control and qubit 1 as target followed by Ansatz3,Ansatz6,14,2,-0.061035156,-0.0625,-0.057006836
+Ansatz3 followed by CX gate with qubit 0 as control and qubit 1 as target followed by RX(θ3) and RY(θ4) on both qubit 0 and qubit 1 ,Ansatz7,9,4,-0.505371094,-0.511108398,-0.499511719
+"Ansatz3 followed by CX gate with qubit 0 as control and qubit 1 as target followed by RX(θ3) and RY(θ4) on both qubit 0 and 2. The set of CX gate, RX(θ3) and RY(θ4) is repeated once more.",Ansatz8,14,4,-0.947998047,-0.509643555,-0.94543457
+H gate on qubit gate followed by CX gate with qubit 0 as control and qubit 1 as target followed by RX(θ1) on qubit 0 ,AnsatzHint,3,1,-1,-1,-1
